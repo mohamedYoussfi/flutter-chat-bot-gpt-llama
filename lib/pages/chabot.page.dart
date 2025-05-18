@@ -102,7 +102,7 @@ class _ChabotPageState extends State<ChabotPage> {
 
                   var headers = {
                     "Content-Type":"application/json",
-                    //"Authorization":"Bearer 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"
+                    //"Authorization":"Bearer ....."
                   };
 
                   messages.add( {"role": "user", "content": question});
