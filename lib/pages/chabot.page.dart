@@ -98,14 +98,17 @@ class _ChabotPageState extends State<ChabotPage> {
                   String question = userController.text;
                   //Uri  uri= Uri.https("api.openai.com","/v1/chat/completions");
                   //Uri uri=Uri.parse("https://api.openai.com//v1/chat/completions");
-                  Uri uri=Uri.parse("http://172.16.0.22:11434/v1/chat/completions");
+                  Uri uri=Uri.parse("http://172.20.10.2:11434/v1/chat/completions");
 
                   var headers = {
                     "Content-Type":"application/json",
-
+                    //"Authorization":"Bearer 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"
                   };
 
-                  messages.add( {"role": "user", "content": question});
+
+                  setState(() {
+                    messages.add( {"role": "user", "content": question});
+                  });
                   var body = {
                     //"model": "gpt-4o", "messages": messages
                     "model": "llama3.2", "messages": messages
@@ -115,7 +118,7 @@ class _ChabotPageState extends State<ChabotPage> {
                      var aiResponse = json.decode(resp.body);
                      String answer = aiResponse['choices'][0]['message']['content'];
                      setState(() {
-                       messages.add({"role":"user","content":question});
+                       //messages.add({"role":"user","content":question});
                        messages.add({"role":"assistant","content":answer});
                        scrollController.jumpTo(
                            scrollController.position.maxScrollExtent + 800);
